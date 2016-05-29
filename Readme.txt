@@ -1,1 +1,1 @@
-readme
+This is a small mobile robotics testbed for IIST.
