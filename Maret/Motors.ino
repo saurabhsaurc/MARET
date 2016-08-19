@@ -6,14 +6,14 @@ void runMotors(int L1_speed, int L2_speed)
   //L1,M1 - left, L2,M2 - right
   if(L1_speed < 0)
   {
-    digitalWrite(M1_pin_A,HIGH);
-    digitalWrite(M1_pin_B,LOW);
+    digitalWrite(M1_pin_A,LOW);
+    digitalWrite(M1_pin_B,HIGH);
     L1_speed = -L1_speed;
   }
   else
   {
-    digitalWrite(M1_pin_A,LOW);
-    digitalWrite(M1_pin_B,HIGH);
+    digitalWrite(M1_pin_A,HIGH);
+    digitalWrite(M1_pin_B,LOW);
   }
   
   if(L1_speed > 255)
@@ -23,14 +23,14 @@ void runMotors(int L1_speed, int L2_speed)
   
   if(L2_speed < 0)
   {
-    digitalWrite(M2_pin_A,LOW);
-    digitalWrite(M2_pin_B,HIGH);
+    digitalWrite(M2_pin_A,HIGH);
+    digitalWrite(M2_pin_B,LOW);
     L2_speed = -L2_speed;
   }
   else
   {
-    digitalWrite(M2_pin_A,HIGH);
-    digitalWrite(M2_pin_B,LOW);
+    digitalWrite(M2_pin_A,LOW);
+    digitalWrite(M2_pin_B,HIGH);
   }
   
   if(L2_speed > 255)

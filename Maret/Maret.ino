@@ -13,12 +13,12 @@
 
 //Input output ports defined
 //Motor pins
-#define M2_pin_PWM 8
-#define M2_pin_B 9
-#define M2_pin_A 10
-#define M1_pin_PWM 11
-#define M1_pin_B 12
-#define M1_pin_A 13
+#define M1_pin_PWM 8
+#define M1_pin_B 9
+#define M1_pin_A 10
+#define M2_pin_PWM 11
+#define M2_pin_B 12
+#define M2_pin_A 13
 
 //IR sensor for collision avoidance
 #define IR_pin_1 15
@@ -84,6 +84,7 @@ float radius_bot = 0.126; //inm
 
 //Variables to be used in functions for count,etc.
 long prevTimeUltrasonic = 0; //Stores the last time when ultrasonic measurement was taken ( in ms )
+long prevTimeEnc = 0;
 float prevDistErrorUltrasonic = 0; //Stores the previous error in distance measurement
 float errorSumUltrasonic = 0; //Integral error
 float dist = 0; //Distance from target
@@ -121,8 +122,8 @@ void setup()
   pinMode(LF_pin_3,INPUT);
   pinMode(LF_pin_4,INPUT);
 
-  attachInterrupt(0,doEncoderL,CHANGE);
-  attachInterrupt(1,doEncoderR,CHANGE);
+  attachInterrupt(0,doEncoderR,CHANGE);
+  attachInterrupt(1,doEncoderL,CHANGE);
   
   Serial.begin(115200); //Note that 115200 is reqd to communicate with bluetooth shield  
 }
@@ -171,6 +172,7 @@ void loop()
   if( mode == 5)
   { encoderLdirection = 1;
     encoderRdirection = 1;
+    //runMotors(255,255);
     testenc();
   }
     
