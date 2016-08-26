@@ -76,7 +76,7 @@ long encoderRcount = 0;
 int encoderRdirection = 1;
 float thetaL = 0;
 float thetaR = 0;
-float radiansPerCount = 2*PI/72;
+float radiansPerCount = 2*PI/60; //Encoder disc has 30 slots
 
 //Dimensions of wheel radius and radius of bot ( ie half of distance between two wheels )
 float radius_wheel = 0.026; //in m
@@ -89,8 +89,9 @@ float prevDistErrorUltrasonic = 0; //Stores the previous error in distance measu
 float errorSumUltrasonic = 0; //Integral error
 float dist = 0; //Distance from target
 float alpha = 0.8; //For low pass filter
+
 int mode = 0; //Mode determines which algorithm will be used
-int count = 0;
+int count = 0; //for ultrasonic dist printing
 //Position - determined by encoders
 float pos_x=0;
 float pos_y=0;
@@ -122,8 +123,8 @@ void setup()
   pinMode(LF_pin_3,INPUT);
   pinMode(LF_pin_4,INPUT);
 
-  attachInterrupt(0,doEncoderR,CHANGE);
-  attachInterrupt(1,doEncoderL,CHANGE);
+  attachInterrupt(1,doEncoderR,CHANGE); // pin 3
+  attachInterrupt(2,doEncoderL,CHANGE); // pin 21
   
   Serial.begin(115200); //Note that 115200 is reqd to communicate with bluetooth shield  
 }

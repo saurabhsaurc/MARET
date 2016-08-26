@@ -2,9 +2,10 @@
 
 void testenc(){
 
-  runMotors(160*encoderLdirection,255*encoderRdirection);  
+  runMotors(80*encoderLdirection,255*encoderRdirection);  
 
   //Determining position x,y,phi
+  
   float d_thetaL = thetaL - prev_thetaL;
   prev_thetaL = thetaL;
   float d_thetaR = thetaR - prev_thetaR;
@@ -17,10 +18,10 @@ void testenc(){
   pos_phi = pos_phi + (d_thetaR - d_thetaL)*radius_wheel/(2*radius_bot);
   pos_x = pos_x - sin(pos_phi)* (d_thetaL + d_thetaR)*radius_wheel/2 ;
   pos_y = pos_y + cos(pos_phi)* (d_thetaL + d_thetaR)*radius_wheel/2 ;
-
-  Serial.print(thetaL);
+  
+  Serial.print(encoderLcount);
   Serial.print(" ");
-  Serial.print(thetaR);
+  Serial.print(encoderRcount);
   Serial.print(" ");
   Serial.print(pos_x);
   Serial.print(" ");
@@ -28,6 +29,6 @@ void testenc(){
   Serial.print(" ");
   Serial.println(pos_phi); 
 
-  delay(10);
+  delay(20);
 }
 
