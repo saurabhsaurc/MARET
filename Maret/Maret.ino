@@ -80,11 +80,11 @@ float radiansPerCount = 2*PI/60; //Encoder disc has 30 slots
 
 //Dimensions of wheel radius and radius of bot ( ie half of distance between two wheels )
 float radius_wheel = 0.026; //in m
-float radius_bot = 0.126; //inm
+float radius_bot = 0.112; //in m, measured from interior of wheel
 
 //Variables to be used in functions for count,etc.
 long prevTimeUltrasonic = 0; //Stores the last time when ultrasonic measurement was taken ( in ms )
-long prevTimeEnc = 0;
+long prevTimeEnc = 0; //Time for encoder measurements - not used
 float prevDistErrorUltrasonic = 0; //Stores the previous error in distance measurement
 float errorSumUltrasonic = 0; //Integral error
 float dist = 0; //Distance from target

@@ -2,7 +2,7 @@
 
 void testenc(){
 
-  runMotors(80*encoderLdirection,255*encoderRdirection);  
+  runMotors(200*encoderLdirection,100*encoderRdirection);
 
   //Determining position x,y,phi
   
@@ -19,9 +19,9 @@ void testenc(){
   pos_x = pos_x - sin(pos_phi)* (d_thetaL + d_thetaR)*radius_wheel/2 ;
   pos_y = pos_y + cos(pos_phi)* (d_thetaL + d_thetaR)*radius_wheel/2 ;
   
-  Serial.print(encoderLcount);
+  Serial.print(thetaL);
   Serial.print(" ");
-  Serial.print(encoderRcount);
+  Serial.print(thetaR);
   Serial.print(" ");
   Serial.print(pos_x);
   Serial.print(" ");
